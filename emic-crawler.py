@@ -20,8 +20,9 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
             source_file_name, destination_blob_name
         )
     )
-
-def main(request):
+ 
+#cloud function啟動後將網頁複製下來並以不同的時間為檔名儲存在值區emic-crawler-cla
+def main(request):  
   end = int(time.time())
   start = end - 3600
 
