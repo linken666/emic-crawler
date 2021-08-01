@@ -40,7 +40,7 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
         )
     )
 
-#開啟先前上傳的檔案，儲存為csv檔後存到新值區emic-csv-cla
+#開啟先前上傳的檔案
 def main(event, context):
   download_blob(event['bucket'], event['name'], '/tmp/'+event['name'])
 
@@ -50,7 +50,7 @@ def main(event, context):
     _emic_csv_writer("/tmp/"+filename)
     upload_blob("emic-csv-cla", "/tmp/"+filename, filename)
 
-#將該檔案儲存為csv檔
+#將該檔案解析後儲存為csv檔
 def _emic_csv_writer(filename):
   xmlparse = ET.parse( filename )
   root = xmlparse.getroot()
