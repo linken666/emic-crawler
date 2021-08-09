@@ -43,16 +43,14 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
 #開啟先前上傳的檔案
 def main(event, context):
   download_blob(event['bucket'], event['name'], '/tmp/'+event['name'])
-
-  ids = open('/tmp/'+event['name']).read()
-  for nid in ids:
-    filename = f"{nid}.csv"
-    _emic_csv_writer("/tmp/"+filename)
-    upload_blob("emic-csv-cla", "/tmp/"+filename, filename)
+  filename = f"{event['name']}.csv"
+  pat = '/tmp/'+event['name']
+  _emic_csv_writer(pat , filename)
+  upload_blob("emic-csv-cla", "/tmp/"+filename, filename)
 
 #將該檔案解析後儲存為csv檔
-def _emic_csv_writer(filename):
-  xmlparse = ET.parse( filename )
+def _emic_csv_writer(pat , filename):
+  xmlparse = ET.parse( pat )
   root = xmlparse.getroot()
   rows = []
   cnt = 0
