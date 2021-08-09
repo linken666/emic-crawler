@@ -6,12 +6,8 @@ EMIC.py
 
 emic-crawler.py 
 --
-結合課程6-2範例後佈署到GCP上的版本
-
-點選網址啟動時會出現Error: could not handle the request，並且在值區內儲存的檔案都是亂碼
+複製網頁內容下來
 
 emic-writer.py
 --
-結合課程6-3範例後佈署到GCP上的版本
-
-無法成功佈署
+OSError: [Errno 30] Read-only file system:
