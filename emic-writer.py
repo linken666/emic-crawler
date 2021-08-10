@@ -43,9 +43,9 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
 #開啟先前上傳的檔案
 def main(event, context):
   download_blob(event['bucket'], event['name'], '/tmp/'+event['name'])  #下載新增的xml檔
-  filename = f"{event['name']}.csv"  #開一個csv
+  filename = f"{event['name']}.csv"  #開一個空的csv
   pat = '/tmp/'+event['name']  #xml檔的路徑
-  _emic_csv_writer(pat , filename)  #回傳給我csv
+  _emic_csv_writer(pat , filename)  #回傳給我寫好的csv
   upload_blob("emic-csv-cla", "/tmp/"+filename, filename)  #上傳到值區
 
 #將該檔案解析後儲存為csv檔
