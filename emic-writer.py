@@ -77,6 +77,6 @@ def _emic_csv_writer(pat , filename):
                    })
   #print(rows)  
   df = pd.DataFrame(rows)  #把rows做成DataFrame(像excel的那種表格)
-  tempdes="/tmp/"+filename
+  tempdes="/tmp/"+filename  #gcp只有/tmp這個資料夾可以寫東西進來，原本直接用filename會變成把檔案存在gcp工作中的資料夾，所以沒辦法寫成功，把路徑指定好是在/tmp資料夾裡面就可以寫
   #print("des:",tempdes)
   df.to_csv(tempdes, encoding = 'utf_8_sig')  #把df輸出成csv檔，utf-8、utf_8都會亂碼，反正就這個邏輯每個都試試
